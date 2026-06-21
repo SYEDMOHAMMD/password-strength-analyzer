@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Password Strength Checker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>Password Analyzer <span>by Mohammad</span> <span class="badge">AI Coach</span></h1>
+    <p>Real-time strength analysis · entropy calculation · Claude AI personalized coaching</p>
+  </div>
+
+  <div class="pw-wrap">
+    <input type="password" id="pwInput" placeholder="Type a password to analyze..." oninput="analyze()" autocomplete="off" />
+    <button class="eye-btn" onclick="toggleVis()" title="Toggle visibility">👁</button>
+  </div>
+
+  <div class="meter-wrap">
+    <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+  </div>
+  <div class="strength-row">
+    <span class="strength-label" id="strengthLabel">Enter a password</span>
+    <span class="strength-sub"   id="strengthSub"></span>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="val" id="sLen">0</div><div class="lbl">Length</div></div>
+    <div class="stat"><div class="val" id="sEnt">0 bits</div><div class="lbl">Entropy</div></div>
+    <div class="stat"><div class="val" id="sCrack">—</div><div class="lbl">Crack time</div></div>
+  </div>
+
+  <div class="checks-grid">
+    <div class="check" id="c-len">  <span class="icon">○</span> 8+ characters</div>
+    <div class="check" id="c-upper"><span class="icon">○</span> Uppercase letter</div>
+    <div class="check" id="c-lower"><span class="icon">○</span> Lowercase letter</div>
+    <div class="check" id="c-num">  <span class="icon">○</span> Number</div>
+    <div class="check" id="c-sym">  <span class="icon">○</span> Special symbol</div>
+    <div class="check" id="c-com">  <span class="icon">○</span> Not a common password</div>
+  </div>
+
+  <div class="ai-panel" id="aiPanel">
+    <div class="ai-header">
+      <span class="spinner" id="aiSpinner" style="display:none"></span>
+      <span>🤖 AI Coach</span>
+    </div>
+    <div class="ai-text" id="aiText">Start typing to get personalized feedback from Claude AI.</div>
+    <div class="suggest-box" id="suggestBox" onclick="copySuggestion()" title="Click to copy">
+      <div class="hint">💡 Suggested strong password (click to copy)</div>
+      <div class="pw" id="suggestPw"></div>
+    </div>
+    <div class="entropy-section">
+      <div class="entropy-label">Password entropy</div>
+      <div class="entropy-track"><div class="entropy-fill" id="entropyFill" style="width:0%"></div></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
